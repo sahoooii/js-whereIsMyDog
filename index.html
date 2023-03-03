@@ -4,8 +4,34 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Rampart+One&family=Rubik+Iso&display=swap"
+			rel="stylesheet"
+		/>
 		<link rel="stylesheet" href="styles.css" />
-		<title>Where's My Dog?</title>
+		<script src="./JS/main.js" async type="module"></script>
+		<title>Where Is My Dog?</title>
 	</head>
-	<body></body>
+	<body>
+		<h1 class="page-title">Where Is My Dog?</h1>
+
+		<!-- <div class="overlay-text visible">Click to Start</div>
+		<div id="game-over-text" class="overlay-text">
+			GAME OVER<span class="overlay-text-small">Click to Restart</span>
+		</div>
+				<div id="victory-text" class="overlay-text">
+			VICTORY<span class="overlay-text-small">Click to Restart</span>
+		</div> -->
+
+		<div class="game-container">
+			<div class="game-info-container">
+				<div class="game-info">Time: <span id="time-remaining">100</span></div>
+				<div class="game-info">Lives: <span id="playerLiveCount"></span></div>
+			</div>
+			
+			<section></section>
+		</div>
+	</body>
 </html>

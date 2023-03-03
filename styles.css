@@ -1,0 +1,46 @@
+* {
+	box-sizing: order-box;
+}
+
+html {
+	min-height: 100vh;
+}
+
+body {
+	margin: 0;
+	background-color: #ffff63;
+}
+
+/* .original-gradient {
+	height: 100vh;
+	width: 100%;
+	background-image: repeating-linear-gradient(
+		90deg,
+		rgba(255, 246, 222, 1) 4% 8%,
+		rgba(255, 179, 15, 1) 8% 16%
+	);
+} */
+
+.page-title {
+	font-family: 'Rubik Iso', cursive;
+	font-size: 6em;
+	font-weight: bold;
+	text-align: center;
+	color: violet;
+}
+
+.game-container {
+	margin: 50px;
+	justify-content: center;
+}
+
+.game-info-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.game-info {
+	font-family: 'Rampart One', cursive;
+	font-size: 4em;
+	color: #0000aa;
+}
