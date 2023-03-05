@@ -10,17 +10,9 @@ body {
 	margin: 0;
 	background-color: #85ffbd;
 	background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
-}
-
-/* .original-gradient {
-	height: 100vh;
+	/* height: 100vh; */
 	width: 100%;
-	background-image: repeating-linear-gradient(
-		90deg,
-		rgba(255, 246, 222, 1) 4% 8%,
-		rgba(255, 179, 15, 1) 8% 16%
-	);
-} */
+}
 
 .page-title {
 	font-family: 'Rubik Iso', cursive;
@@ -31,35 +23,67 @@ body {
 }
 
 .game-container {
-	display: grid;
-	grid-template-columns: repeat(4, auto);
-	grid-gap: 10px;
+	display: flex;
 	margin: 50px;
 	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 	/* perspective: 500px; */
 }
-/* section {
-	display: grid;
-	grid-template-rows: repeat(4, 8rem);
-	grid-template-columns: repeat(4, 8rem);
-	grid-gap: 2rem;
-	/* perspective: 800px; */
-} */
 
 .game-info-container {
-	grid-column: 1 / -1;
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: repeat(2, auto);
+	grid-gap: 50px;
+	margin-bottom: 10px;
 }
 
 .game-info {
 	font-family: 'Rampart One', cursive;
 	font-size: 3em;
 	color: #0000aa;
+	/* margin-left: 2rem; */
+}
+
+section {
+	display: grid;
+	grid-template-columns: repeat(4, auto);
+	grid-gap: 10px; */
+	/* perspective: 800px; */
 }
 
 .card {
-	background-color: #FFFF11;
-	height: 175px;
-	width: 125px;
+	position: relative;
+	height: 180px;
+	width: 130px;
+	border-radius: 10px;
+	background-image: repeating-linear-gradient(
+		90deg,
+		rgba(255, 246, 222, 1) 2% 8%,
+		rgba(255, 179, 15, 1) 8% 17%
+	);
+}
+
+.card-face {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	backface-visibility: hidden;
+}
+
+.card-backImg {
+	align-self: center;
+	/* transform: translateX(0px); */
+	transition: 100ms;
+}
+
+.card-back:hover .card-backImg {
+	transform: scale(0.7, 0.7)
+}
+
+.card-front {
+	transform: rotateX(180deg);
 }

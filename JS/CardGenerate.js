@@ -104,8 +104,8 @@ export const cardGenerator = () => {
 		//add elements
 		section.appendChild(card);
 		card.appendChild(cardBack);
-		card.appendChild(cardBackImg);
+		cardBack.appendChild(cardBackImg);
 		card.appendChild(cardFront);
-		card.appendChild(cardFrontImg);
+		cardFront.appendChild(cardFrontImg);
 	});
 };
