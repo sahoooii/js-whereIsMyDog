@@ -4,6 +4,7 @@
 
 html {
 	min-height: 100vh;
+	cursor: url('./Assets/Cursor/footprintCur.png'), auto;
 }
 
 body {
@@ -14,12 +15,45 @@ body {
 	width: 100%;
 }
 
+.overlay-text {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	justify-content: center;
+	align-items: center;
+	z-index: 100;
+	font-family: 'Rubik Iso', cursive;
+	color: orange;
+}
+.overlay-text i {
+	
+}
+
+.overlay-text.visible {
+	display: flex;
+	animation: overlay-grow 500ms forwards;
+}
+
+@keyframes overlay-grow {
+	from {
+		background-color: rgba(0, 0, 0, 0);
+		font-size: 0;
+	}
+	to {
+		background-color: rgba(0, 0, 0, 0.8);
+		font-size: 6em;
+	}
+}
+
 .page-title {
 	font-family: 'Rubik Iso', cursive;
 	font-size: 6em;
 	font-weight: bold;
 	text-align: center;
-	color: violet;
+	color: orange;
 }
 
 .game-container {
@@ -28,7 +62,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	/* perspective: 500px; */
+	perspective: 500px;
 }
 
 .game-info-container {
@@ -42,26 +76,52 @@ body {
 	font-family: 'Rampart One', cursive;
 	font-size: 3em;
 	color: #0000aa;
-	/* margin-left: 2rem; */
 }
 
 section {
 	display: grid;
 	grid-template-columns: repeat(4, auto);
-	grid-gap: 10px; */
-	/* perspective: 800px; */
+	grid-gap: 10px;
 }
 
 .card {
 	position: relative;
 	height: 180px;
 	width: 130px;
-	border-radius: 10px;
+}
+
+.card.visible .card-back {
+	transform: rotateY(-180deg);
+}
+
+.card.visible .card-front {
+	transform: rotateY(0deg);
+}
+
+.card.matched .card-value {
+	animation: dance 1s linear infinite 500ms;
+}
+
+@keyframes dance {
+	0%,
+	100% {
+		transform: rotate(0);
+	}
+	25% {
+		transform: rotate(-30deg);
+	}
+	75% {
+		transform: rotate(30deg);
+	}
+}
+
+.card-back {
 	background-image: repeating-linear-gradient(
 		90deg,
 		rgba(255, 246, 222, 1) 2% 8%,
 		rgba(255, 179, 15, 1) 8% 17%
 	);
+	border-color: rgba(255, 179, 15, 1);
 }
 
 .card-face {
@@ -72,18 +132,44 @@ section {
 	justify-content: center;
 	align-items: center;
 	backface-visibility: hidden;
+	border-radius: 10px;
+	box-shadow: 3px 3px 2px black;
+	border-width: 8px;
+	border-style: solid;
+	transition: transform 500ms ease-in-out;
 }
 
 .card-backImg {
 	align-self: center;
-	/* transform: translateX(0px); */
-	transition: 100ms;
+	transform: scale(0.9);
+	transition: transform 100ms ease-in-out;
 }
 
 .card-back:hover .card-backImg {
-	transform: scale(0.7, 0.7)
+	transform: scale(0.6);
+	animation: dance 1s linear infinite 500ms;
 }
 
 .card-front {
-	transform: rotateX(180deg);
+	background: #fff;
+	background-image: repeating-linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 0) 4%,
+		rgba(255, 246, 222, 0.34) 8%,
+		rgba(255, 179, 15, 0.34) 8% 17%
+	);
+	border-color: rgba(255, 179, 15, 1);
+	border-width: 8px;
+	border-style: solid;
+	transform: rotateY(180deg);
+}
+
+.card-value {
+	transition: transform 100ms ease-in-out;
+	transform: scale(1);
+	width: 90%;
+}
+
+.card-front:hover .card-value {
+	transform: scale(0.7);
 }
