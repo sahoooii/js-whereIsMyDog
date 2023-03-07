@@ -9,9 +9,8 @@ html {
 
 body {
 	margin: 0;
-	background-color: #85ffbd;
-	background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
-	/* height: 100vh; */
+	background-image: url('./Assets/Images/background.jpg');
+	background-repeat: repeat;
 	width: 100%;
 }
 
@@ -26,14 +25,12 @@ body {
 	align-items: center;
 	z-index: 100;
 	font-family: 'Rubik Iso', cursive;
-	color: orange;
-}
-.overlay-text i {
-	
+	color: #fff;
 }
 
 .overlay-text.visible {
 	display: flex;
+	flex-direction: column;
 	animation: overlay-grow 500ms forwards;
 }
 
@@ -44,8 +41,25 @@ body {
 	}
 	to {
 		background-color: rgba(0, 0, 0, 0.8);
-		font-size: 6em;
+		font-size: 5em;
 	}
+}
+
+.icon-container {
+	margin-top: 10px;
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+	grid-gap: 50px;
+}
+
+.dog-icon {
+	color: orange;
+}
+
+.overlay-text-small {
+	margin-top: 10px;
+	font-size: 0.4em;
+	font-family: 'Rampart One', cursive;
 }
 
 .page-title {
@@ -53,12 +67,13 @@ body {
 	font-size: 6em;
 	font-weight: bold;
 	text-align: center;
-	color: orange;
+	color: #ff6600;
+	margin-bottom: 20px;
 }
 
 .game-container {
 	display: flex;
-	margin: 50px;
+	margin: 40px;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
@@ -69,13 +84,13 @@ body {
 	display: grid;
 	grid-template-columns: repeat(2, auto);
 	grid-gap: 50px;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 }
 
 .game-info {
-	font-family: 'Rampart One', cursive;
-	font-size: 3em;
-	color: #0000aa;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 2em;
+	color: #FF33FF;
 }
 
 section {
@@ -172,4 +187,45 @@ section {
 
 .card-front:hover .card-value {
 	transform: scale(0.7);
+}
+
+@media screen and (max-width: 683px) {
+	@keyframes overlay-grow {
+		from {
+			background-color: rgba(0, 0, 0, 0);
+			font-size: 0;
+		}
+		to {
+			background-color: rgba(0, 0, 0, 0.8);
+			font-size: 2.5em;
+		}
+	}
+
+	.page-title {
+		font-size: 3.5rem;
+	}
+
+	.card {
+		height: 130px;
+		width: 85px;
+	}
+
+	section {
+		grid-gap: 8px;
+	}
+
+	.card-backImg {
+		width: 70%;
+	}
+
+	.game-info-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		grid-gap: 10px;
+	}
+
+	.game-info {
+		font-size: 1.5rem;
+	}
 }
