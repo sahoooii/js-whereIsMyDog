@@ -23,6 +23,9 @@ export class GameController {
 	flipCard(card) {
 		if (this.canFlipCard(card)) {
 			this.audioController.flip();
+			card.classList.add('visible');
+
+			//match or not
 		}
 	}
 
