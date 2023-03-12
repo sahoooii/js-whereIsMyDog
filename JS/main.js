@@ -4,7 +4,7 @@ import { cardGenerator } from './CardGenerate.js';
 
 function GameReady() {
 	cardGenerator();
-	
+
 	let overlays = Array.from(document.getElementsByClassName('overlay-text'));
 	let cards = Array.from(document.getElementsByClassName('card'));
 	let gameStart = new GameController(100, cards);
