@@ -1,5 +1,4 @@
 import { AudioController } from './AudioController.js';
-import { cardGenerator } from './CardGenerate.js';
 
 export class GameController {
 	constructor(totalTime, cards) {
@@ -7,26 +6,31 @@ export class GameController {
 		this.totalTime = totalTime;
 		this.timeRemaining = totalTime; //countdown time
 		this.timer = document.getElementById('time-remaining');
-		this.playerLiveCount = document.getElementById('playerLiveCount'); //6
+		this.playerLiveCount = document.getElementById('playerLiveCount');
+		this.playerLives = 10;
+		this.playerLiveCount.innerText = this.playerLives;
 		this.audioController = new AudioController();
 	}
 
 	startGame() {
 		this.clickedCard = null;
-		this.playerLiveCount.innerText = 6;
 		this.timeRemaining = this.totalTime;
+		this.playerLives = 10
+		this.playerLiveCount.innerText = this.playerLives;
 		this.matchedCards = [];
 		this.busy = true;
 
+		//for control game to delay
 		setTimeout(() => {
 			this.audioController.startMusic();
-			// cardGenerator();
 			this.countDown = this.startCountDown();
 			this.busy = false;
 		}, 500);
 
+		// reset game
 		this.hideCards();
 		this.timer.innerText = this.timeRemaining;
+		this.playerLiveCount.innerText = this.playerLives;
 	}
 
 	hideCards() {
@@ -54,24 +58,46 @@ export class GameController {
 		if (this.getCardType(card) === this.getCardType(this.clickedCard)) {
 			this.cardMatch(card, this.clickedCard);
 		} else {
-			this.cardMismatch(card);
+			this.cardMismatch(card, this.clickedCard);
 		}
+		this.clickedCard = null;
+	}
+
+
+	getCardType(card) {
+		return card.getElementsByClassName('card-value')[0].src;
 	}
 
 	cardMatch(card1, card2) {
 		this.matchedCards.push(card1);
 		this.matchedCards.push(card2);
 
-		card1.classList.add('matched');
-		card2.classList.add('matched');
-		this.audioController.match();
-		// from here
+		setTimeout(() => {
+			card1.classList.add('matched');
+			card2.classList.add('matched');
+			this.audioController.match();
+		}, 300);
+
+		setTimeout(() => {
+			if (this.matchedCards.length === this.cardsArray.length) {
+				this.victory();
+			}
+		}, 800);
 	}
 
-	cardMismatch(card) {}
-
-	getCardType(card) {
-		return card.getElementsByClassName('card-value')[0].src;
+	cardMismatch(card1, card2) {
+		this.busy = true;
+		// to remember cards
+		setTimeout(() => {
+			card1.classList.remove('visible');
+			card2.classList.remove('visible');
+			this.playerLives--;
+			this.playerLiveCount.innerText = this.playerLives;
+			if (this.playerLives === 0) {
+				this.gameOver();
+			}
+			this.busy = false;
+		}, 1000);
 	}
 
 	startCountDown() {
@@ -100,11 +126,10 @@ export class GameController {
 
 	//1.busy, animation happening 2.matched cards 3.already flipped card
 	canFlipCard(card) {
-		return true;
-		// return (
-		// 	!this.busy &&
-		// 	!this.matchedCards.includes(card) &&
-		// 	card !== this.clickedCard
-		// );
+		return (
+			!this.busy &&
+			!this.matchedCards.includes(card) &&
+			card !== this.clickedCard
+		);
 	}
 }
