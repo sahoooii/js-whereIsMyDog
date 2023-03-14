@@ -3,6 +3,7 @@ export class AudioController {
 		this.bgMusic = new Audio('../Assets/Audio/dogWalk.mp3');
 		this.flipSound = new Audio('../Assets/Audio/flip.mp3');
 		this.matchSound = new Audio('../Assets/Audio/match.mp3');
+		this.wrongSound = new Audio('../Assets/Audio/wrong.mp3');
 		this.victorySound = new Audio('../Assets/Audio/victory.mp3');
 		this.gameOverSound = new Audio('../Assets/Audio/gameOver.mp3');
 
@@ -25,6 +26,10 @@ export class AudioController {
 
 	match() {
 		this.matchSound.play();
+	}
+	
+	wrong() {
+		this.wrongSound.play();
 	}
 
 	victory() {

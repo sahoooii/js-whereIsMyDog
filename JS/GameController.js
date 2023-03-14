@@ -15,8 +15,7 @@ export class GameController {
 	startGame() {
 		this.clickedCard = null;
 		this.timeRemaining = this.totalTime;
-		this.playerLives = 10
-		this.playerLiveCount.innerText = this.playerLives;
+		this.playerLives = 10;
 		this.matchedCards = [];
 		this.busy = true;
 
@@ -33,6 +32,7 @@ export class GameController {
 		this.playerLiveCount.innerText = this.playerLives;
 	}
 
+	//to reset cards
 	hideCards() {
 		this.cardsArray.forEach((card) => {
 			card.classList.remove('visible');
@@ -63,7 +63,6 @@ export class GameController {
 		this.clickedCard = null;
 	}
 
-
 	getCardType(card) {
 		return card.getElementsByClassName('card-value')[0].src;
 	}
@@ -82,7 +81,7 @@ export class GameController {
 			if (this.matchedCards.length === this.cardsArray.length) {
 				this.victory();
 			}
-		}, 800);
+		}, 1000);
 	}
 
 	cardMismatch(card1, card2) {
@@ -93,6 +92,8 @@ export class GameController {
 			card2.classList.remove('visible');
 			this.playerLives--;
 			this.playerLiveCount.innerText = this.playerLives;
+			this.audioController.wrong();
+			
 			if (this.playerLives === 0) {
 				this.gameOver();
 			}
