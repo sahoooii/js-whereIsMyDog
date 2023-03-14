@@ -7,8 +7,6 @@ export class GameController {
 		this.timeRemaining = totalTime; //countdown time
 		this.timer = document.getElementById('time-remaining');
 		this.playerLiveCount = document.getElementById('playerLiveCount');
-		this.playerLives = 10;
-		this.playerLiveCount.innerText = this.playerLives;
 		this.audioController = new AudioController();
 	}
 
@@ -86,19 +84,21 @@ export class GameController {
 
 	cardMismatch(card1, card2) {
 		this.busy = true;
-		// to remember cards
+		// to remember cards, give time
 		setTimeout(() => {
 			card1.classList.remove('visible');
 			card2.classList.remove('visible');
 			this.playerLives--;
 			this.playerLiveCount.innerText = this.playerLives;
 			this.audioController.wrong();
-			
+		}, 800);
+
+		setTimeout(() => {
 			if (this.playerLives === 0) {
 				this.gameOver();
 			}
 			this.busy = false;
-		}, 1000);
+		}, 1500);
 	}
 
 	startCountDown() {
@@ -113,7 +113,7 @@ export class GameController {
 
 	victory() {
 		clearInterval(this.countDown);
-
+		
 		this.audioController.victory();
 		document.getElementById('victory-text').classList.add('visible');
 	}
