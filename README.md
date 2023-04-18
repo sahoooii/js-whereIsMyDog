@@ -18,4 +18,4 @@ JavaScriptだけで作ったメモリーゲーム。ゲーム名は"Where Is My 
 ## src
 * [Sounds](https://pixabay.com/ja/sound-effects/search/dog/?duration=0-30)
 * [Images](https://iconscout.com/all-assets/dog?price=free)
-* [Icon](https://fontawesome.com/search?q=dog&o=r)
+* [Icons](https://fontawesome.com/search?q=dog&o=r)
