@@ -1,67 +1,67 @@
 const getCardData = () => [
 	{
-		// imgSrc: '../Assets/Images/dog-collar.png',
-		imgSrc: '.../../src/Assets/Images/dog-collar.png',
+		imgSrc: '../Assets/Images/dog-collar.png',
 		name: 'collar',
 	},
 	{
-		imgSrc: '../../src/Assets/Images/dog-collar.png',
+		imgSrc: '../Assets/Images/dog-collar.png',
 		name: 'collar',
 	},
 	{
-		imgSrc: '../../src/Assets/Images/dog-food.png',
+		imgSrc: '../Assets/Images/dog-food.png',
 		name: 'dogFood',
 	},
 	{
-		imgSrc: '../../src/Assets/Images/dog-food.png',
+		imgSrc: '../Assets/Images/dog-food.png',
 		name: 'dogFood',
 	},
 	{
-		imgSrc: '../../src/Assets/Images/dog-head.png',
+		imgSrc: '../Assets/Images/dog-head.png',
 		name: 'dogHead',
 	},
 	{
-		imgSrc: '../../src/Assets/Images/dog-head.png',
+		imgSrc: '../Assets/Images/dog-head.png',
 		name: 'dogHead',
 	},
 	{
-		imgSrc: '../../src/Assets/Images/dog.png',
+		imgSrc: '../Assets/Images/dog.png',
 		name: 'dogNormal',
 	},
 	{
-		imgSrc: '../../src/Assets/Images/dog.png',
+		imgSrc: '../Assets/Images/dog.png',
 		name: 'dogNormal',
 	},
 	{
-		imgSrc: '../../src/Assets/Images/dogSit.png',
+		imgSrc: '../Assets/Images/dogSit.png',
 		name: 'dogSit',
 	},
 	{
-		imgSrc: '../../src/Assets/Images/dogSit.png',
+		imgSrc: '../Assets/Images/dogSit.png',
 		name: 'dogSit',
 	},
 	{
-		imgSrc: '../../src/Assets/Images/dogTongue.png',
+		imgSrc: '../Assets/Images/dogTongue.png',
 		name: 'dogTongue',
 	},
 	{
-		imgSrc: '../../src/Assets/Images/dogTongue.png',
+		imgSrc: '../Assets/Images/dogTongue.png',
 		name: 'dogTongue',
 	},
 	{
-		imgSrc: '../../src/Assets/Images/dog-colorful.png',
+		imgSrc: '../Assets/Images/dog-colorful.png',
 		name: 'dogColorful',
 	},
 	{
-		imgSrc: '../../src/Assets/Images/dog-colorful.png',
+		imgSrc: '../Assets/Images/dog-colorful.png',
 		name: 'dogColorful',
 	},
 	{
-		imgSrc: '../../src/Assets/Images/hot-dog.png',
+		imgSrc: '../Assets/Images/hot-dog.png',
 		name: 'hotDog',
 	},
 	{
-		imgSrc: '../../src/Assets/Images/hot-dog.png',
+		// imgSrc: '../Assets/Images/hot-dog.png',
+		imgSrc: '../Assets/Images/hot-dog.png',
 		name: 'hotDog',
 	},
 ];
@@ -96,7 +96,7 @@ export const cardGenerator = () => {
 		cardFrontImg.classList.add('card-value');
 
 		//add img src
-		cardBackImg.src = '../../src/Assets/Images/cardBack.png';
+		cardBackImg.src = '../Assets/Images/cardBack.png';
 		cardFrontImg.src = item.imgSrc;
 
 		//which card did I click
