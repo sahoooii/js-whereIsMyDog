@@ -1,6 +1,5 @@
 export class AudioController {
 	constructor() {
-		// this.bgMusic = new Audio('../Assets/Audio/dogWalk.mp3');
 		this.bgMusic = new Audio('../../src/Assets/Audio/dogWalk.mp3');
 		this.flipSound = new Audio('../../src/Assets/Audio/flip.mp3');
 		this.matchSound = new Audio('../../src/Assets/Audio/match.mp3');

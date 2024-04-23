@@ -1,9 +1,54 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Webpack App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"><script defer src="bundle.js"></script></head>
-  <body>
-  </body>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rampart+One&family=Rubik+Iso&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+		/>
+		<link rel="icon" href="./src/Assets/Favicon/favicon.ico" />
+		<!-- <link rel="stylesheet" href="styles.css" /> -->
+		<link rel="stylesheet" href="style.css" type="text/css" />
+		<!-- <script src="./JS/gameReady.js" async type="module"></script> -->
+		<script src="bundle.js" async type="module"></script>
+		<title>Where Is My Dog?</title>
+	</head>
+	<body>
+		<h1 class="page-title">Where Is My Dog?</h1>
+		<div class="overlay-text visible">
+			Find Your Buddy
+			<div class="icon-container">
+				<i class="fa-solid fa-bone dog-icon"></i>
+				<i class="fa-solid fa-dog dog-icon"></i>
+				<i class="fa-solid fa-bone dog-icon"></i>
+			</div>
+		</div>
+		<div id="game-over-text" class="overlay-text">
+			GAME OVER
+			<i class="fa-solid fa-shield-dog dog-icon"></i>
+			<span class="overlay-text-small">Find Again</span>
+		</div>
+		<div id="victory-text" class="overlay-text">
+			YOU WON
+			<i class="fa-solid fa-paw dog-icon"></i>
+			<span class="overlay-text-small">Find Again</span>
+		</div>
+
+		<div class="game-container">
+			<div class="game-info-container">
+				<div class="game-info">Time: <span id="time-remaining">60</span></div>
+				<div class="game-info">Lives: <span id="playerLiveCount">10</span></div>
+			</div>
+
+			<section></section>
+		</div>
+	</body>
 </html>

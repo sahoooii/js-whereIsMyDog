@@ -1,6 +1,6 @@
 {
 	"name": "whereismydog",
-	"description": "### Describe in English",
+	"description": "Memory Game",
 	"version": "1.0.0",
 	"main": "index.js",
 	"devDependencies": {
@@ -11,18 +11,17 @@
 		"css-minimizer-webpack-plugin": "^6.0.0",
 		"mini-css-extract-plugin": "^2.9.0",
 		"webpack": "^5.91.0",
-		"webpack-cli": "^5.1.4"
+		"webpack-cli": "^5.1.4",
+		"webpack-dev-server": "^5.0.4"
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "webpack server",
 		"dev": "webpack --mode development",
 		"build": "webpack --mode production",
 		"watch": "webpack --mode  development --watch"
 	},
 	"keywords": [],
 	"author": "",
-	"license": "ISC",
-	"dependencies": {
-		"webpack-dev-server": "^5.0.4"
-	}
+	"license": "ISC"
 }
