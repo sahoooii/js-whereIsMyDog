@@ -1,6 +1,5 @@
-import { cardGenerator } from './JS/CardGenerate.js';
-import { GameController } from './JS/GameController.js';
-import './styles.css'
+import { cardGenerator } from './CardGenerate.js';
+import { GameController } from './GameController.js';
 
 if (document.readyState == 'loading') {
 	document.addEventListener('DOMContentLoaded', GameReady);
