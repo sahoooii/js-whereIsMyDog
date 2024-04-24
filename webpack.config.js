@@ -6,13 +6,13 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 module.exports = {
 	entry: './src/gameReady.js',
 	output: {
-		path: path.resolve(__dirname, 'dist'),
+		path: path.resolve(__dirname, 'build'),
 		filename: 'bundle.js',
 	},
-	mode: 'development',
+	mode: 'production',
 	devServer: {
 		static: {
-			directory: path.join(__dirname, 'dist'),
+			directory: path.join(__dirname, 'build'),
 		},
 		open: true,
 	},
