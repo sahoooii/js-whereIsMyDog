@@ -4,12 +4,12 @@
 
 html {
 	min-height: 100vh;
-	cursor: url('./Assets/Cursor/footprintCur.png'), auto;
+	cursor: url('../Assets/Cursor/footprintCur.png'), auto;
 }
 
 body {
 	margin: 0;
-	background-image: url('./Assets/Images/background.jpg');
+	background-image: url('../Assets/Images/background.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	width: 100%;
