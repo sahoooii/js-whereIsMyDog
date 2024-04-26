@@ -16,13 +16,20 @@
 		/>
 		<link rel="icon" href="../Favicon/favicon.ico" />
 		<link rel="stylesheet" href="styles.css" />
-		<!-- <script src="./JS/gameReady.js" async type="module"></script> -->
-		<!-- <link rel="stylesheet" href="dist/style.css" type="text/css" /> -->
 		<script src="bundle.js" async type="module"></script>
 		<title>Where Is My Dog?</title>
 	</head>
 	<body>
 		<h1 class="page-title">Where Is My Dog?</h1>
+		<div class="game-container">
+			<div class="game-info-container">
+				<div class="game-info">Time: <span id="time-remaining">60</span></div>
+				<div class="game-info">Lives: <span id="playerLiveCount">10</span></div>
+			</div>
+			<section></section>
+		</div>
+
+		<!-- Overlay Game start -->
 		<div class="overlay-text visible">
 			Find Your Buddy
 			<div class="icon-container">
@@ -31,24 +38,26 @@
 				<i class="fa-solid fa-bone dog-icon"></i>
 			</div>
 		</div>
+
+		<!-- Overlay Game over -->
 		<div id="game-over-text" class="overlay-text">
 			GAME OVER
 			<i class="fa-solid fa-shield-dog dog-icon"></i>
 			<span class="overlay-text-small">Find Again</span>
 		</div>
+		<!-- Overlay when you victory -->
 		<div id="victory-text" class="overlay-text">
 			YOU WON
 			<i class="fa-solid fa-paw dog-icon"></i>
 			<span class="overlay-text-small">Find Again</span>
 		</div>
 
-		<div class="game-container">
+		<!-- <div class="game-container">
 			<div class="game-info-container">
 				<div class="game-info">Time: <span id="time-remaining">60</span></div>
 				<div class="game-info">Lives: <span id="playerLiveCount">10</span></div>
 			</div>
-
 			<section></section>
-		</div>
+		</div> -->
 	</body>
 </html>
