@@ -13,6 +13,7 @@ function GameReady() {
 
 	let overlays = Array.from(document.getElementsByClassName('overlay-text'));
 	let cards = Array.from(document.getElementsByClassName('card'));
+	// Pass totalTime and cards
 	let gameStart = new GameController(60, cards);
 
 	// start game

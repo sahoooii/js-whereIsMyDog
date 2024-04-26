@@ -12,7 +12,7 @@ module.exports = {
 	// setting Local Server
 	devServer: {
 		static: path.resolve(__dirname, 'dist'),
-		open: true,
+		// open: true,
 	},
 	plugins: [
 		new MiniCssExtractPlugin({
