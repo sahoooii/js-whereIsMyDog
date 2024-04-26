@@ -1,5 +1,6 @@
 import { cardGenerator } from './CardGenerate.js';
 import { GameController } from './GameController.js';
+import '../styles.css';
 
 if (document.readyState == 'loading') {
 	document.addEventListener('DOMContentLoaded', GameReady);

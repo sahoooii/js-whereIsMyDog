@@ -1,67 +1,66 @@
 const getCardData = () => [
 	{
-		imgSrc: '../Assets/Images/dog-collar.png',
+		imgSrc: '../Images/dog-collar.png',
 		name: 'collar',
 	},
 	{
-		imgSrc: '../Assets/Images/dog-collar.png',
+		imgSrc: '../Images/dog-collar.png',
 		name: 'collar',
 	},
 	{
-		imgSrc: '../Assets/Images/dog-food.png',
+		imgSrc: '../Images/dog-food.png',
 		name: 'dogFood',
 	},
 	{
-		imgSrc: '../Assets/Images/dog-food.png',
+		imgSrc: '../Images/dog-food.png',
 		name: 'dogFood',
 	},
 	{
-		imgSrc: '../Assets/Images/dog-head.png',
+		imgSrc: '../Images/dog-head.png',
 		name: 'dogHead',
 	},
 	{
-		imgSrc: '../Assets/Images/dog-head.png',
+		imgSrc: '../Images/dog-head.png',
 		name: 'dogHead',
 	},
 	{
-		imgSrc: '../Assets/Images/dog.png',
+		imgSrc: '../Images/dog.png',
 		name: 'dogNormal',
 	},
 	{
-		imgSrc: '../Assets/Images/dog.png',
+		imgSrc: '../Images/dog.png',
 		name: 'dogNormal',
 	},
 	{
-		imgSrc: '../Assets/Images/dogSit.png',
+		imgSrc: '../Images/dogSit.png',
 		name: 'dogSit',
 	},
 	{
-		imgSrc: '../Assets/Images/dogSit.png',
+		imgSrc: '../Images/dogSit.png',
 		name: 'dogSit',
 	},
 	{
-		imgSrc: '../Assets/Images/dogTongue.png',
+		imgSrc: '../Images/dogTongue.png',
 		name: 'dogTongue',
 	},
 	{
-		imgSrc: '../Assets/Images/dogTongue.png',
+		imgSrc: '../Images/dogTongue.png',
 		name: 'dogTongue',
 	},
 	{
-		imgSrc: '../Assets/Images/dog-colorful.png',
+		imgSrc: '../Images/dog-colorful.png',
 		name: 'dogColorful',
 	},
 	{
-		imgSrc: '../Assets/Images/dog-colorful.png',
+		imgSrc: '../Images/dog-colorful.png',
 		name: 'dogColorful',
 	},
 	{
-		imgSrc: '../Assets/Images/hot-dog.png',
+		imgSrc: '../Images/hot-dog.png',
 		name: 'hotDog',
 	},
 	{
-		// imgSrc: '../Assets/Images/hot-dog.png',
-		imgSrc: '../Assets/Images/hot-dog.png',
+		imgSrc: '../Images/hot-dog.png',
 		name: 'hotDog',
 	},
 ];
@@ -96,7 +95,7 @@ export const cardGenerator = () => {
 		cardFrontImg.classList.add('card-value');
 
 		//add img src
-		cardBackImg.src = '../Assets/Images/cardBack.png';
+		cardBackImg.src = '../Images/cardBack.png';
 		cardFrontImg.src = item.imgSrc;
 
 		//which card did I click
