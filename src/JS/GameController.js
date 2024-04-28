@@ -17,20 +17,20 @@ export class GameController {
 		this.matchedCards = [];
 		this.busy = true;
 
-		//for control game to delay
+		//For control game to delay
 		setTimeout(() => {
 			this.audioController.startMusic();
 			this.countDown = this.startCountDown();
 			this.busy = false;
 		}, 500);
 
-		// reset game
+		// Reset game
 		this.hideCards();
 		this.timer.innerText = this.timeRemaining;
 		this.playerLiveCount.innerText = this.playerLives;
 	}
 
-	//to reset cards
+	//To reset cards
 	hideCards() {
 		this.cardsArray.forEach((card) => {
 			card.classList.remove('visible');
@@ -38,12 +38,23 @@ export class GameController {
 		});
 	}
 
+	//1.Not busy, animation happening
+	// 2.Not matched cards
+	// 3.Not already flipped card
+	canFlipCard(card) {
+		return (
+			!this.busy &&
+			!this.matchedCards.includes(card) &&
+			card !== this.clickedCard
+		);
+	}
+
 	flipCard(card) {
 		if (this.canFlipCard(card)) {
 			this.audioController.flip();
 			card.classList.add('visible');
 
-			//match or not
+			//Match or not
 			if (this.clickedCard) {
 				this.checkForCardMatch(card);
 			} else {
@@ -52,15 +63,7 @@ export class GameController {
 		}
 	}
 
-	checkForCardMatch(card) {
-		if (this.getCardType(card) === this.getCardType(this.clickedCard)) {
-			this.cardMatch(card, this.clickedCard);
-		} else {
-			this.cardMismatch(card, this.clickedCard);
-		}
-		this.clickedCard = null;
-	}
-
+	// Get src attribute
 	getCardType(card) {
 		return card.getElementsByClassName('card-value')[0].src;
 	}
@@ -84,7 +87,7 @@ export class GameController {
 
 	cardMismatch(card1, card2) {
 		this.busy = true;
-		// to remember cards, give time
+		// Give time to remember flipped cards
 		setTimeout(() => {
 			card1.classList.remove('visible');
 			card2.classList.remove('visible');
@@ -101,6 +104,15 @@ export class GameController {
 		}, 1500);
 	}
 
+	checkForCardMatch(card) {
+		if (this.getCardType(card) === this.getCardType(this.clickedCard)) {
+			this.cardMatch(card, this.clickedCard);
+		} else {
+			this.cardMismatch(card, this.clickedCard);
+		}
+		this.clickedCard = null;
+	}
+
 	startCountDown() {
 		return setInterval(() => {
 			this.timeRemaining--;
@@ -113,7 +125,7 @@ export class GameController {
 
 	victory() {
 		clearInterval(this.countDown);
-		
+
 		this.audioController.victory();
 		document.getElementById('victory-text').classList.add('visible');
 	}
@@ -123,14 +135,5 @@ export class GameController {
 
 		this.audioController.gameOver();
 		document.getElementById('game-over-text').classList.add('visible');
-	}
-
-	//1.busy, animation happening 2.matched cards 3.already flipped card
-	canFlipCard(card) {
-		return (
-			!this.busy &&
-			!this.matchedCards.includes(card) &&
-			card !== this.clickedCard
-		);
 	}
 }
