@@ -63,9 +63,19 @@ export class GameController {
 		}
 	}
 
-	// Get src attribute
+	// Get img src attribute
 	getCardType(card) {
 		return card.getElementsByClassName('card-value')[0].src;
+	}
+
+	// Check flipped card match or not
+	checkForCardMatch(card) {
+		if (this.getCardType(card) === this.getCardType(this.clickedCard)) {
+			this.cardMatch(card, this.clickedCard);
+		} else {
+			this.cardMismatch(card, this.clickedCard);
+		}
+		this.clickedCard = null;
 	}
 
 	cardMatch(card1, card2) {
@@ -102,15 +112,6 @@ export class GameController {
 			}
 			this.busy = false;
 		}, 1500);
-	}
-
-	checkForCardMatch(card) {
-		if (this.getCardType(card) === this.getCardType(this.clickedCard)) {
-			this.cardMatch(card, this.clickedCard);
-		} else {
-			this.cardMismatch(card, this.clickedCard);
-		}
-		this.clickedCard = null;
 	}
 
 	startCountDown() {

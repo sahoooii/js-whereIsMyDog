@@ -23,12 +23,11 @@ export const cardGenerator = () => {
 		cardFront.classList.add('card-front', 'card-face');
 		cardFrontImg.classList.add('card-value');
 
-		//add img src
+		//Add card img src and alt
 		cardBackImg.src = '../Images/cardBack.png';
+		cardBackImg.setAttribute('alt', 'backImg-pawBox');
 		cardFrontImg.src = item.imgSrc;
-
-		//Which card did I click
-		card.setAttribute('name', item.name);
+		cardFrontImg.setAttribute('alt', item.name);
 
 		//Add elements
 		section.appendChild(card);
@@ -43,7 +42,7 @@ export const cardGenerator = () => {
 		// 		<img class='card-backImg' />
 		// 	</div>
 		// 	<div class='card-front card-face'>
-		// 		<img class='card-value' />
+		// 		<img class='card-value' alt='' />
 		// 	</div>
 		// </div>;
 	});
