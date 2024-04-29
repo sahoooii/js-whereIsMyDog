@@ -1,111 +1,49 @@
-const getCardData = () => [
-	{
-		imgSrc: '../Images/dog-collar.png',
-		name: 'collar',
-	},
-	{
-		imgSrc: '../Images/dog-collar.png',
-		name: 'collar',
-	},
-	{
-		imgSrc: '../Images/dog-food.png',
-		name: 'dogFood',
-	},
-	{
-		imgSrc: '../Images/dog-food.png',
-		name: 'dogFood',
-	},
-	{
-		imgSrc: '../Images/dog-head.png',
-		name: 'dogHead',
-	},
-	{
-		imgSrc: '../Images/dog-head.png',
-		name: 'dogHead',
-	},
-	{
-		imgSrc: '../Images/dog.png',
-		name: 'dogNormal',
-	},
-	{
-		imgSrc: '../Images/dog.png',
-		name: 'dogNormal',
-	},
-	{
-		imgSrc: '../Images/dogSit.png',
-		name: 'dogSit',
-	},
-	{
-		imgSrc: '../Images/dogSit.png',
-		name: 'dogSit',
-	},
-	{
-		imgSrc: '../Images/dogTongue.png',
-		name: 'dogTongue',
-	},
-	{
-		imgSrc: '../Images/dogTongue.png',
-		name: 'dogTongue',
-	},
-	{
-		imgSrc: '../Images/dog-colorful.png',
-		name: 'dogColorful',
-	},
-	{
-		imgSrc: '../Images/dog-colorful.png',
-		name: 'dogColorful',
-	},
-	{
-		imgSrc: '../Images/hot-dog.png',
-		name: 'hotDog',
-	},
-	{
-		imgSrc: '../Images/hot-dog.png',
-		name: 'hotDog',
-	},
-];
-
-//shuffle cards
-const shuffleCards = () => {
-	const cardData = getCardData();
-	cardData.sort(() => Math.random() - 0.5);
-
-	return cardData;
-};
+import getCardData from './getCardData';
 
 const section = document.querySelector('section');
 
-//generate html
+//Generate html
 export const cardGenerator = () => {
-	const cardData = shuffleCards();
+	//Shuffle cards
+	const cardData = getCardData();
+	cardData.sort(() => Math.random() - 0.5);
 
 	cardData.forEach((item) => {
-		// create elements
+		// Create elements
 		const card = document.createElement('div');
 		const cardBack = document.createElement('div');
 		const cardBackImg = document.createElement('img');
 		const cardFront = document.createElement('div');
 		const cardFrontImg = document.createElement('img');
 
-		//add class
+		//Add class
 		card.classList.add('card');
 		cardBack.classList.add('card-back', 'card-face');
 		cardBackImg.classList.add('card-backImg');
 		cardFront.classList.add('card-front', 'card-face');
 		cardFrontImg.classList.add('card-value');
 
-		//add img src
+		//Add card img src and alt
 		cardBackImg.src = '../Images/cardBack.png';
+		cardBackImg.setAttribute('alt', 'backImg-pawBox');
 		cardFrontImg.src = item.imgSrc;
+		cardFrontImg.setAttribute('alt', item.name);
 
-		//which card did I click
-		card.setAttribute('name', item.name);
-
-		//add elements
+		//Add elements
 		section.appendChild(card);
 		card.appendChild(cardBack);
 		cardBack.appendChild(cardBackImg);
 		card.appendChild(cardFront);
 		cardFront.appendChild(cardFrontImg);
+
+		// Created html inside of Section
+		// <div class='card'>
+		// 	<div class='card-back card-face'>
+		// 		<img class='card-backImg' />
+		// 	</div>
+		// 	<div class='card-front card-face'>
+		// 		<img class='card-value' alt='' />
+		// 	</div>
+		// </div>;
 	});
 };

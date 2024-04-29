@@ -47,7 +47,7 @@ body {
 }
 
 .icon-container {
-	margin-top: 10px;
+	margin-top: 15px;
 	display: grid;
 	grid-template-columns: repeat(3, auto);
 	grid-gap: 50px;
@@ -69,12 +69,13 @@ body {
 	font-weight: bold;
 	text-align: center;
 	color: #ff6600;
+	margin-top: 40px;
 	margin-bottom: 20px;
 }
 
 .game-container {
 	display: flex;
-	margin: 40px;
+	margin: 40px 40px 100px 40px;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
@@ -85,7 +86,7 @@ body {
 	display: grid;
 	grid-template-columns: repeat(2, auto);
 	grid-gap: 50px;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 }
 
 .game-info {
@@ -94,6 +95,7 @@ body {
 	color: #000099;
 }
 
+/* For cards */
 section {
 	display: grid;
 	grid-template-columns: repeat(4, auto);
@@ -131,6 +133,7 @@ section {
 	}
 }
 
+/* Make orage white stripe */
 .card-back {
 	background-image: repeating-linear-gradient(
 		90deg,
@@ -166,6 +169,7 @@ section {
 	animation: dance 1s linear infinite 500ms;
 }
 
+/* Make light orage white stripe front face*/
 .card-front {
 	background: #fff;
 	background-image: repeating-linear-gradient(
@@ -190,6 +194,12 @@ section {
 	transform: scale(0.7);
 }
 
+@media screen and (max-width: 768px) {
+	.page-title {
+		font-size: 5rem;
+	}
+}
+
 @media screen and (max-width: 683px) {
 	@keyframes overlay-grow {
 		from {
@@ -200,6 +210,10 @@ section {
 			background-color: rgba(0, 0, 0, 0.8);
 			font-size: 2.5em;
 		}
+	}
+
+	.game-container {
+		margin: 40px 0;
 	}
 
 	.page-title {
