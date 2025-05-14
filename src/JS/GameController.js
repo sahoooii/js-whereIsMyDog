@@ -1,5 +1,7 @@
 import { AudioController } from './AudioController.js';
 
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export class GameController {
 	constructor(totalTime, cards) {
 		this.cardsArray = cards;
@@ -10,24 +12,24 @@ export class GameController {
 		this.audioController = new AudioController();
 	}
 
-	startGame() {
+	async startGame() {
 		this.clickedCard = null;
 		this.timeRemaining = this.totalTime;
 		this.playerLives = 10;
 		this.matchedCards = [];
 		this.busy = true;
 
-		//For control game to delay
-		setTimeout(() => {
-			this.audioController.startMusic();
-			this.countDown = this.startCountDown();
-			this.busy = false;
-		}, 500);
-
 		// Reset game
 		this.hideCards();
 		this.timer.innerText = this.timeRemaining;
 		this.playerLiveCount.innerText = this.playerLives;
+
+		await delay(500);
+
+		//For control game to delay
+		this.audioController.startMusic();
+		this.countDown = this.startCountDown();
+		this.busy = false;
 	}
 
 	//To reset cards
@@ -78,40 +80,41 @@ export class GameController {
 		this.clickedCard = null;
 	}
 
-	cardMatch(card1, card2) {
+	async cardMatch(card1, card2) {
 		this.matchedCards.push(card1);
 		this.matchedCards.push(card2);
 
-		setTimeout(() => {
-			card1.classList.add('matched');
-			card2.classList.add('matched');
-			this.audioController.match();
-		}, 300);
+		await delay(300);
 
-		setTimeout(() => {
-			if (this.matchedCards.length === this.cardsArray.length) {
-				this.victory();
-			}
-		}, 1000);
+		card1.classList.add('matched');
+		card2.classList.add('matched');
+		this.audioController.match();
+
+		await delay(700);
+
+		if (this.matchedCards.length === this.cardsArray.length) {
+			this.victory();
+		}
 	}
 
-	cardMismatch(card1, card2) {
+	async cardMismatch(card1, card2) {
 		this.busy = true;
-		// Give time to remember flipped cards
-		setTimeout(() => {
-			card1.classList.remove('visible');
-			card2.classList.remove('visible');
-			this.playerLives--;
-			this.playerLiveCount.innerText = this.playerLives;
-			this.audioController.wrong();
-		}, 800);
 
-		setTimeout(() => {
-			if (this.playerLives === 0) {
-				this.gameOver();
-			}
-			this.busy = false;
-		}, 1500);
+		// Give time to remember cards before flip
+		await delay(800);
+
+		card1.classList.remove('visible');
+		card2.classList.remove('visible');
+		this.playerLives--;
+		this.playerLiveCount.innerText = this.playerLives;
+		this.audioController.wrong();
+
+		await delay(700);
+
+		if (this.playerLives === 0) {
+			this.gameOver();
+		}
+		this.busy = false;
 	}
 
 	startCountDown() {

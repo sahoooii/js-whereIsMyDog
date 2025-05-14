@@ -1,1 +1,136 @@
-(()=>{"use strict";const e=function(){return[{imgSrc:"../Images/dog-collar.png",name:"collar"},{imgSrc:"../Images/dog-collar.png",name:"collar"},{imgSrc:"../Images/dog-food.png",name:"dogFood"},{imgSrc:"../Images/dog-food.png",name:"dogFood"},{imgSrc:"../Images/dog-head.png",name:"dogHead"},{imgSrc:"../Images/dog-head.png",name:"dogHead"},{imgSrc:"../Images/dog.png",name:"dogNormal"},{imgSrc:"../Images/dog.png",name:"dogNormal"},{imgSrc:"../Images/dogSit.png",name:"dogSit"},{imgSrc:"../Images/dogSit.png",name:"dogSit"},{imgSrc:"../Images/dogTongue.png",name:"dogTongue"},{imgSrc:"../Images/dogTongue.png",name:"dogTongue"},{imgSrc:"../Images/dog-colorful.png",name:"dogColorful"},{imgSrc:"../Images/dog-colorful.png",name:"dogColorful"},{imgSrc:"../Images/hot-dog.png",name:"hotDog"},{imgSrc:"../Images/hot-dog.png",name:"hotDog"}]};var t=document.querySelector("section");function i(e){return i="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},i(e)}function n(e,t){for(var i=0;i<t.length;i++){var n=t[i];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,o(n.key),n)}}function o(e){var t=function(e,t){if("object"!=i(e)||!e)return e;var n=e[Symbol.toPrimitive];if(void 0!==n){var o=n.call(e,t||"default");if("object"!=i(o))return o;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===t?String:Number)(e)}(e,"string");return"symbol"==i(t)?t:t+""}var r=function(){return e=function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.bgMusic=new Audio("../Audio/dogWalk.mp3"),this.flipSound=new Audio("../Audio/flip.mp3"),this.matchSound=new Audio("../Audio/match.mp3"),this.wrongSound=new Audio("../Audio/wrong.mp3"),this.victorySound=new Audio("../Audio/victory.mp3"),this.gameOverSound=new Audio("../Audio/gameOver.mp3"),this.bgMusic.volume=.5,this.bgMusic.loop=!0},(t=[{key:"startMusic",value:function(){this.bgMusic.play()}},{key:"stopMusic",value:function(){this.bgMusic.pause(),this.bgMusic.currentTime=0}},{key:"flip",value:function(){this.flipSound.play()}},{key:"match",value:function(){this.matchSound.play()}},{key:"wrong",value:function(){this.wrongSound.play()}},{key:"victory",value:function(){this.stopMusic(),this.victorySound.play()}},{key:"gameOver",value:function(){this.stopMusic(),this.gameOverSound.play()}}])&&n(e.prototype,t),i&&n(e,i),Object.defineProperty(e,"prototype",{writable:!1}),e;var e,t,i}();function a(e){return a="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},a(e)}function c(e,t){for(var i=0;i<t.length;i++){var n=t[i];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,s(n.key),n)}}function s(e){var t=function(e,t){if("object"!=a(e)||!e)return e;var i=e[Symbol.toPrimitive];if(void 0!==i){var n=i.call(e,t||"default");if("object"!=a(n))return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===t?String:Number)(e)}(e,"string");return"symbol"==a(t)?t:t+""}var u=function(){return e=function e(t,i){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.cardsArray=i,this.totalTime=t,this.timeRemaining=t,this.timer=document.getElementById("time-remaining"),this.playerLiveCount=document.getElementById("playerLiveCount"),this.audioController=new r},(t=[{key:"startGame",value:function(){var e=this;this.clickedCard=null,this.timeRemaining=this.totalTime,this.playerLives=10,this.matchedCards=[],this.busy=!0,setTimeout((function(){e.audioController.startMusic(),e.countDown=e.startCountDown(),e.busy=!1}),500),this.hideCards(),this.timer.innerText=this.timeRemaining,this.playerLiveCount.innerText=this.playerLives}},{key:"hideCards",value:function(){this.cardsArray.forEach((function(e){e.classList.remove("visible"),e.classList.remove("matched")}))}},{key:"canFlipCard",value:function(e){return!this.busy&&!this.matchedCards.includes(e)&&e!==this.clickedCard}},{key:"flipCard",value:function(e){this.canFlipCard(e)&&(this.audioController.flip(),e.classList.add("visible"),this.clickedCard?this.checkForCardMatch(e):this.clickedCard=e)}},{key:"getCardType",value:function(e){return e.getElementsByClassName("card-value")[0].src}},{key:"checkForCardMatch",value:function(e){this.getCardType(e)===this.getCardType(this.clickedCard)?this.cardMatch(e,this.clickedCard):this.cardMismatch(e,this.clickedCard),this.clickedCard=null}},{key:"cardMatch",value:function(e,t){var i=this;this.matchedCards.push(e),this.matchedCards.push(t),setTimeout((function(){e.classList.add("matched"),t.classList.add("matched"),i.audioController.match()}),300),setTimeout((function(){i.matchedCards.length===i.cardsArray.length&&i.victory()}),1e3)}},{key:"cardMismatch",value:function(e,t){var i=this;this.busy=!0,setTimeout((function(){e.classList.remove("visible"),t.classList.remove("visible"),i.playerLives--,i.playerLiveCount.innerText=i.playerLives,i.audioController.wrong()}),800),setTimeout((function(){0===i.playerLives&&i.gameOver(),i.busy=!1}),1500)}},{key:"startCountDown",value:function(){var e=this;return setInterval((function(){e.timeRemaining--,e.timer.innerText=e.timeRemaining,0===e.timeRemaining&&e.gameOver()}),1e3)}},{key:"victory",value:function(){clearInterval(this.countDown),this.audioController.victory(),document.getElementById("victory-text").classList.add("visible")}},{key:"gameOver",value:function(){clearInterval(this.countDown),this.audioController.gameOver(),document.getElementById("game-over-text").classList.add("visible")}}])&&c(e.prototype,t),i&&c(e,i),Object.defineProperty(e,"prototype",{writable:!1}),e;var e,t,i}();function d(){var i;(i=e()).sort((function(){return Math.random()-.5})),i.forEach((function(e){var i=document.createElement("div"),n=document.createElement("div"),o=document.createElement("img"),r=document.createElement("div"),a=document.createElement("img");i.classList.add("card"),n.classList.add("card-back","card-face"),o.classList.add("card-backImg"),r.classList.add("card-front","card-face"),a.classList.add("card-value"),o.src="../Images/cardBack.png",o.setAttribute("alt","backImg-pawBox"),a.src=e.imgSrc,a.setAttribute("alt",e.name),t.appendChild(i),i.appendChild(n),n.appendChild(o),i.appendChild(r),r.appendChild(a)}));var n=Array.from(document.getElementsByClassName("overlay-text")),o=Array.from(document.getElementsByClassName("card")),r=new u(60,o);n.forEach((function(e){e.addEventListener("click",(function(){e.classList.remove("visible"),r.startGame()}))})),o.forEach((function(e){e.addEventListener("click",(function(){r.flipCard(e)}))}))}"loading"==document.readyState?document.addEventListener("DOMContentLoaded",d):d()})();
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/JS/AudioController.js":
+/*!***********************************!*\
+  !*** ./src/JS/AudioController.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   AudioController: () => (/* binding */ AudioController)\n/* harmony export */ });\nfunction _typeof(o) { \"@babel/helpers - typeof\"; return _typeof = \"function\" == typeof Symbol && \"symbol\" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && \"function\" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? \"symbol\" : typeof o; }, _typeof(o); }\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, \"prototype\", { writable: false }); return Constructor; }\nfunction _toPropertyKey(t) { var i = _toPrimitive(t, \"string\"); return \"symbol\" == _typeof(i) ? i : i + \"\"; }\nfunction _toPrimitive(t, r) { if (\"object\" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || \"default\"); if (\"object\" != _typeof(i)) return i; throw new TypeError(\"@@toPrimitive must return a primitive value.\"); } return (\"string\" === r ? String : Number)(t); }\nvar AudioController = /*#__PURE__*/function () {\n  function AudioController() {\n    _classCallCheck(this, AudioController);\n    this.bgMusic = new Audio('../Audio/dogWalk.mp3');\n    this.flipSound = new Audio('../Audio/flip.mp3');\n    this.matchSound = new Audio('../Audio/match.mp3');\n    this.wrongSound = new Audio('../Audio/wrong.mp3');\n    this.victorySound = new Audio('../Audio/victory.mp3');\n    this.gameOverSound = new Audio('../Audio/gameOver.mp3');\n    this.bgMusic.volume = 0.5;\n    this.bgMusic.loop = true;\n  }\n  return _createClass(AudioController, [{\n    key: \"startMusic\",\n    value: function startMusic() {\n      this.bgMusic.play();\n    }\n  }, {\n    key: \"stopMusic\",\n    value: function stopMusic() {\n      this.bgMusic.pause();\n      this.bgMusic.currentTime = 0; //restart from the start\n    }\n  }, {\n    key: \"flip\",\n    value: function flip() {\n      this.flipSound.play();\n    }\n  }, {\n    key: \"match\",\n    value: function match() {\n      this.matchSound.play();\n    }\n  }, {\n    key: \"wrong\",\n    value: function wrong() {\n      this.wrongSound.play();\n    }\n  }, {\n    key: \"victory\",\n    value: function victory() {\n      this.stopMusic(); //stop bg music\n      this.victorySound.play();\n    }\n  }, {\n    key: \"gameOver\",\n    value: function gameOver() {\n      this.stopMusic();\n      this.gameOverSound.play();\n    }\n  }]);\n}();\n\n//# sourceURL=webpack://whereismydog/./src/JS/AudioController.js?");
+
+/***/ }),
+
+/***/ "./src/JS/CardGenerate.js":
+/*!********************************!*\
+  !*** ./src/JS/CardGenerate.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   cardGenerator: () => (/* binding */ cardGenerator)\n/* harmony export */ });\n/* harmony import */ var _getCardData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getCardData */ \"./src/JS/getCardData.js\");\n\nvar section = document.querySelector('section');\n\n//Generate html\nvar cardGenerator = function cardGenerator() {\n  //Shuffle cards\n  var cardData = (0,_getCardData__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n  cardData.sort(function () {\n    return Math.random() - 0.5;\n  });\n  cardData.forEach(function (item) {\n    // Create elements\n    var card = document.createElement('div');\n    var cardBack = document.createElement('div');\n    var cardBackImg = document.createElement('img');\n    var cardFront = document.createElement('div');\n    var cardFrontImg = document.createElement('img');\n\n    //Add class\n    card.classList.add('card');\n    cardBack.classList.add('card-back', 'card-face');\n    cardBackImg.classList.add('card-backImg');\n    cardFront.classList.add('card-front', 'card-face');\n    cardFrontImg.classList.add('card-value');\n\n    //Add card img src and alt\n    cardBackImg.src = '../Images/cardBack.png';\n    cardBackImg.setAttribute('alt', 'backImg-pawBox');\n    cardFrontImg.src = item.imgSrc;\n    cardFrontImg.setAttribute('alt', item.name);\n\n    //Add elements\n    section.appendChild(card);\n    card.appendChild(cardBack);\n    cardBack.appendChild(cardBackImg);\n    card.appendChild(cardFront);\n    cardFront.appendChild(cardFrontImg);\n\n    // Created html inside of Section\n    // <div class='card'>\n    // \t<div class='card-back card-face'>\n    // \t\t<img class='card-backImg' />\n    // \t</div>\n    // \t<div class='card-front card-face'>\n    // \t\t<img class='card-value' alt='' />\n    // \t</div>\n    // </div>;\n  });\n};\n\n//# sourceURL=webpack://whereismydog/./src/JS/CardGenerate.js?");
+
+/***/ }),
+
+/***/ "./src/JS/GameController.js":
+/*!**********************************!*\
+  !*** ./src/JS/GameController.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   GameController: () => (/* binding */ GameController)\n/* harmony export */ });\n/* harmony import */ var _AudioController_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AudioController.js */ \"./src/JS/AudioController.js\");\nfunction _typeof(o) { \"@babel/helpers - typeof\"; return _typeof = \"function\" == typeof Symbol && \"symbol\" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && \"function\" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? \"symbol\" : typeof o; }, _typeof(o); }\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, \"prototype\", { writable: false }); return Constructor; }\nfunction _toPropertyKey(t) { var i = _toPrimitive(t, \"string\"); return \"symbol\" == _typeof(i) ? i : i + \"\"; }\nfunction _toPrimitive(t, r) { if (\"object\" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || \"default\"); if (\"object\" != _typeof(i)) return i; throw new TypeError(\"@@toPrimitive must return a primitive value.\"); } return (\"string\" === r ? String : Number)(t); }\n\nvar GameController = /*#__PURE__*/function () {\n  function GameController(totalTime, cards) {\n    _classCallCheck(this, GameController);\n    this.cardsArray = cards;\n    this.totalTime = totalTime;\n    this.timeRemaining = totalTime; //countdown time\n    this.timer = document.getElementById('time-remaining');\n    this.playerLiveCount = document.getElementById('playerLiveCount');\n    this.audioController = new _AudioController_js__WEBPACK_IMPORTED_MODULE_0__.AudioController();\n  }\n  return _createClass(GameController, [{\n    key: \"startGame\",\n    value: function startGame() {\n      var _this = this;\n      this.clickedCard = null;\n      this.timeRemaining = this.totalTime;\n      this.playerLives = 10;\n      this.matchedCards = [];\n      this.busy = true;\n\n      //For control game to delay\n      setTimeout(function () {\n        _this.audioController.startMusic();\n        _this.countDown = _this.startCountDown();\n        _this.busy = false;\n      }, 500);\n\n      // Reset game\n      this.hideCards();\n      this.timer.innerText = this.timeRemaining;\n      this.playerLiveCount.innerText = this.playerLives;\n    }\n\n    //To reset cards\n  }, {\n    key: \"hideCards\",\n    value: function hideCards() {\n      this.cardsArray.forEach(function (card) {\n        card.classList.remove('visible');\n        card.classList.remove('matched');\n      });\n    }\n\n    //1.Not busy, animation happening\n    // 2.Not matched cards\n    // 3.Not already flipped card\n  }, {\n    key: \"canFlipCard\",\n    value: function canFlipCard(card) {\n      return !this.busy && !this.matchedCards.includes(card) && card !== this.clickedCard;\n    }\n  }, {\n    key: \"flipCard\",\n    value: function flipCard(card) {\n      if (this.canFlipCard(card)) {\n        this.audioController.flip();\n        card.classList.add('visible');\n\n        //Match or not\n        if (this.clickedCard) {\n          this.checkForCardMatch(card);\n        } else {\n          this.clickedCard = card;\n        }\n      }\n    }\n\n    // Get img src attribute\n  }, {\n    key: \"getCardType\",\n    value: function getCardType(card) {\n      return card.getElementsByClassName('card-value')[0].src;\n    }\n\n    // Check flipped card match or not\n  }, {\n    key: \"checkForCardMatch\",\n    value: function checkForCardMatch(card) {\n      if (this.getCardType(card) === this.getCardType(this.clickedCard)) {\n        this.cardMatch(card, this.clickedCard);\n      } else {\n        this.cardMismatch(card, this.clickedCard);\n      }\n      this.clickedCard = null;\n    }\n  }, {\n    key: \"cardMatch\",\n    value: function cardMatch(card1, card2) {\n      var _this2 = this;\n      this.matchedCards.push(card1);\n      this.matchedCards.push(card2);\n      setTimeout(function () {\n        card1.classList.add('matched');\n        card2.classList.add('matched');\n        _this2.audioController.match();\n      }, 300);\n      setTimeout(function () {\n        if (_this2.matchedCards.length === _this2.cardsArray.length) {\n          _this2.victory();\n        }\n      }, 1000);\n    }\n  }, {\n    key: \"cardMismatch\",\n    value: function cardMismatch(card1, card2) {\n      var _this3 = this;\n      this.busy = true;\n      // Give time to remember flipped cards\n      setTimeout(function () {\n        card1.classList.remove('visible');\n        card2.classList.remove('visible');\n        _this3.playerLives--;\n        _this3.playerLiveCount.innerText = _this3.playerLives;\n        _this3.audioController.wrong();\n      }, 800);\n      setTimeout(function () {\n        if (_this3.playerLives === 0) {\n          _this3.gameOver();\n        }\n        _this3.busy = false;\n      }, 1500);\n    }\n  }, {\n    key: \"startCountDown\",\n    value: function startCountDown() {\n      var _this4 = this;\n      return setInterval(function () {\n        _this4.timeRemaining--;\n        _this4.timer.innerText = _this4.timeRemaining;\n        if (_this4.timeRemaining === 0) {\n          _this4.gameOver();\n        }\n      }, 1000);\n    }\n  }, {\n    key: \"victory\",\n    value: function victory() {\n      clearInterval(this.countDown);\n      this.audioController.victory();\n      document.getElementById('victory-text').classList.add('visible');\n    }\n  }, {\n    key: \"gameOver\",\n    value: function gameOver() {\n      clearInterval(this.countDown);\n      this.audioController.gameOver();\n      document.getElementById('game-over-text').classList.add('visible');\n    }\n  }]);\n}();\n\n//# sourceURL=webpack://whereismydog/./src/JS/GameController.js?");
+
+/***/ }),
+
+/***/ "./src/JS/gameReady.js":
+/*!*****************************!*\
+  !*** ./src/JS/gameReady.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _CardGenerate_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CardGenerate.js */ \"./src/JS/CardGenerate.js\");\n/* harmony import */ var _GameController_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GameController.js */ \"./src/JS/GameController.js\");\n/* harmony import */ var _styles_styles_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styles/styles.css */ \"./src/styles/styles.css\");\n\n\n\nfunction GameReady() {\n  (0,_CardGenerate_js__WEBPACK_IMPORTED_MODULE_0__.cardGenerator)();\n  var overlays = Array.from(document.getElementsByClassName('overlay-text'));\n  var cards = Array.from(document.getElementsByClassName('card'));\n  // Pass totalTime and shuffle cards\n  var gameStart = new _GameController_js__WEBPACK_IMPORTED_MODULE_1__.GameController(60, cards);\n\n  // Start game\n  overlays.forEach(function (overlay) {\n    overlay.addEventListener('click', function () {\n      overlay.classList.remove('visible');\n      gameStart.startGame();\n    });\n  });\n\n  // Flip sound\n  cards.forEach(function (card) {\n    card.addEventListener('click', function () {\n      gameStart.flipCard(card);\n    });\n  });\n}\nif (document.readyState == 'loading') {\n  document.addEventListener('DOMContentLoaded', GameReady);\n} else {\n  GameReady();\n}\n\n//# sourceURL=webpack://whereismydog/./src/JS/gameReady.js?");
+
+/***/ }),
+
+/***/ "./src/JS/getCardData.js":
+/*!*******************************!*\
+  !*** ./src/JS/getCardData.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar getCardData = function getCardData() {\n  return [{\n    imgSrc: '../Images/dog-collar.png',\n    name: 'collar'\n  }, {\n    imgSrc: '../Images/dog-collar.png',\n    name: 'collar'\n  }, {\n    imgSrc: '../Images/dog-food.png',\n    name: 'dogFood'\n  }, {\n    imgSrc: '../Images/dog-food.png',\n    name: 'dogFood'\n  }, {\n    imgSrc: '../Images/dog-head.png',\n    name: 'dogHead'\n  }, {\n    imgSrc: '../Images/dog-head.png',\n    name: 'dogHead'\n  }, {\n    imgSrc: '../Images/dog.png',\n    name: 'dogNormal'\n  }, {\n    imgSrc: '../Images/dog.png',\n    name: 'dogNormal'\n  }, {\n    imgSrc: '../Images/dogSit.png',\n    name: 'dogSit'\n  }, {\n    imgSrc: '../Images/dogSit.png',\n    name: 'dogSit'\n  }, {\n    imgSrc: '../Images/dogTongue.png',\n    name: 'dogTongue'\n  }, {\n    imgSrc: '../Images/dogTongue.png',\n    name: 'dogTongue'\n  }, {\n    imgSrc: '../Images/dog-colorful.png',\n    name: 'dogColorful'\n  }, {\n    imgSrc: '../Images/dog-colorful.png',\n    name: 'dogColorful'\n  }, {\n    imgSrc: '../Images/hot-dog.png',\n    name: 'hotDog'\n  }, {\n    imgSrc: '../Images/hot-dog.png',\n    name: 'hotDog'\n  }];\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getCardData);\n\n//# sourceURL=webpack://whereismydog/./src/JS/getCardData.js?");
+
+/***/ }),
+
+/***/ "./src/styles/styles.css":
+/*!*******************************!*\
+  !*** ./src/styles/styles.css ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://whereismydog/./src/styles/styles.css?");
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/JS/gameReady.js");
+/******/ 	
+/******/ })()
+;

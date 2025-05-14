@@ -1,6 +1,6 @@
 import { cardGenerator } from './CardGenerate.js';
 import { GameController } from './GameController.js';
-import '../styles.css';
+import '../styles/styles.css';
 
 function GameReady() {
 	cardGenerator();
