@@ -53,10 +53,10 @@ export class GameController {
 
 	flipCard(card) {
 		if (this.canFlipCard(card)) {
-			this.audioController.flip();
 			card.classList.add('visible');
+			this.audioController.flip();
 
-			//Match or not
+			// Judge mach or not
 			if (this.clickedCard) {
 				this.checkForCardMatch(card);
 			} else {
