@@ -1,11 +1,14 @@
 # js-whereIsMyDog
 
+## 🛠 Tech Stack
+
 ![HTML5](https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-![Webpack](https://img.shields.io/badge/webpack-2E5E82?style=for-the-badge&logo=webpack&logoColor=white)
-![Babel](https://img.shields.io/badge/babel-F9DC3E?style=for-the-badge&logo=babel&logoColor=black)
+![Webpack](https://img.shields.io/badge/webpack@5.91.0-2E5E82?style=for-the-badge&logo=webpack&logoColor=white)
+![Babel](https://img.shields.io/badge/babel@7.24.4-F9DC3E?style=for-the-badge&logo=babel&logoColor=000)
+
 
 <p>etc...</p>
 
